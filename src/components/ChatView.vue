@@ -628,7 +628,7 @@ onMounted(() => {
         <emoji-picker v-if="showEmojiPicker" class="emoji-picker" @emoji-click="insertEmoji"></emoji-picker>
 	-->
 	
-       <EmojiSelect v-if="showEmojiPicker" top="-260px" left="40px"  @selectEmoji="insertEmoji2" />
+       <EmojiSelect v-if="showEmojiPicker" top="-240px" left="0px"  @selectEmoji="insertEmoji2" />
 
 <!--
        <EmojiPicker v-if="showEmojiPicker" :native="true" :display-recent="true" @select="insertEmoji2" 

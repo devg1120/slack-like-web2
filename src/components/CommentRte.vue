@@ -250,9 +250,13 @@ defineExpose({
               <emoji-picker v-if="showCommentEmojiPicker" class="comment-emoji-picker" @emoji-click="comment_insertEmoji"></emoji-picker>
 -->
 <!--
-    <EmojiSelect v-if="showCommentEmojiPicker" position="relative" top="0px" left="0px"  @selectEmoji="comment_insertEmoji2" />
+    <EmojiSelect v-if="showCommentEmojiPicker" top="20px" left="20px"    @selectEmoji="comment_insertEmoji2" />
 -->
-    <EmojiSelect v-if="showCommentEmojiPicker"  top="0px" left="0px"  @selectEmoji="comment_insertEmoji2" />
+    <EmojiSelect v-if="showCommentEmojiPicker" position="relative" top="0px" left="0px"    @selectEmoji="comment_insertEmoji2" />
+
+<!--
+    <EmojiSelect v-if="showCommentEmojiPicker"  top="50px" left="50px"  @selectEmoji="comment_insertEmoji2" />
+    -->
 <!--
       <EmojiPicker v-if="showCommentEmojiPicker" :native="true" :display-recent="true" @select="comment_insertEmoji2" 
   :additional-groups="{

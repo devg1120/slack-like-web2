@@ -72,6 +72,8 @@ const props = defineProps({
     position: absolute;
     */
     position: v-bind(props.position);
+    /*float: left;*/
+
     
     /*
     position: relative;

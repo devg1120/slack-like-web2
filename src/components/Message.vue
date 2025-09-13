@@ -618,6 +618,39 @@ const getUsersStr = ( users) => {
      }
    return _str;
 }
+
+function getLeft_(d) {
+    let x = this.x;
+    console.log("getLeft", x);
+    let t = x + d;
+    let str = String(t) + "px"
+    return str
+}
+
+import { useTemplateRef } from 'vue'
+import { useElementBounding } from '@vueuse/core'
+
+const el = useTemplateRef('reaction_emoji_button_el')
+
+function getTop(d) {
+    //const { x, y, top, right, bottom, left, width, height } = useElementBounding(el)
+    console.log("KKK",el.value.clientHeight);
+    console.log("KKK",el.value.clientWidth);
+    console.log("KKK",el.value.clientTop);
+    console.log("KKK",el.value.clientLeft);
+    console.log("KKK",el.value.clientX);
+    console.log("KKK",el.value.clientY);
+    let str =  el.top + "px"
+    console.log("top", str);
+    return str;
+}
+function getLeft(d) {
+    //const { x, y, top, right, bottom, left, width, height } = useElementBounding(el)
+    let str = el.left + "px"
+    console.log("left", str);
+    return str;
+}
+
 </script>
 
 <template>
@@ -681,7 +714,7 @@ const getUsersStr = ( users) => {
 		    <!--
             <button class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">😊</button>
 		    -->
-            <button class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
+            <button ref="reaction_emoji_button_el" class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
               <div class="reactions" v-if="message.reactions?.length">
 		      <!--
                 <div
@@ -711,8 +744,10 @@ const getUsersStr = ( users) => {
 <!--
 	    <emoji-picker   v-if="showEmojiPicker"  @emoji-click="addReactionFromPicker"></emoji-picker>
 -->
-
-   <EmojiSelect v-if="showEmojiPicker" position="rerative" top="0px" left="0px"  @selectEmoji="addReactionFromPicker2" />
+<!--
+   <EmojiSelect v-if="showEmojiPicker"  top="20px" left="20px"  @selectEmoji="addReactionFromPicker2" />
+   -->
+   <EmojiSelect v-if="showEmojiPicker"  position="relative" top="0px" left="0px"  @selectEmoji="addReactionFromPicker2" />
 
 <!--
   <EmojiPicker v-if="showEmojiPicker" :native="true" :display-recent="true" @select="addReactionFromPicker2" 
@@ -779,6 +814,12 @@ const getUsersStr = ( users) => {
             <button class="emoji-button" @click="showEmojiPicker = !showEmojiPicker">😊</button>
 -->
             <button class="add-comment" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Reply</button>
+<!--
+Listener added for a synchronous 'DOMNodeInserted' DOM Mutation Event. This event type is deprecated (https://w3c.github.io/uievents/#legacy-event-types) and work is underway to remove it from this browser. Usage of this event listener will cause performance issues today, and represents a risk of future incompatibility. Consider using MutationObserver instead.
+
+DOMNodeInserted
+MutationObserver
+-->
 
             <div v-if="showCommentInput === message.id" class="comment-input">
                <CommentRte        
