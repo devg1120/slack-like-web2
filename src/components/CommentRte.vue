@@ -7,6 +7,7 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
+import EmojiSelect from './EmojiSelect.vue'
 
 //import  quillEmoji from "quill-emoji";
 //import 'quill-emoji/dist/quill-emoji.css';
@@ -248,6 +249,11 @@ defineExpose({
 <!--
               <emoji-picker v-if="showCommentEmojiPicker" class="comment-emoji-picker" @emoji-click="comment_insertEmoji"></emoji-picker>
 -->
+<!--
+    <EmojiSelect v-if="showCommentEmojiPicker" position="relative" top="0px" left="0px"  @selectEmoji="comment_insertEmoji2" />
+-->
+    <EmojiSelect v-if="showCommentEmojiPicker"  top="0px" left="0px"  @selectEmoji="comment_insertEmoji2" />
+<!--
       <EmojiPicker v-if="showCommentEmojiPicker" :native="true" :display-recent="true" @select="comment_insertEmoji2" 
   :additional-groups="{
     my_custom_group: [
@@ -263,7 +269,7 @@ defineExpose({
   }"
   :group-names="{ my_custom_group: 'Frequently used' }"
   />  
-
+-->
               <button class="emoji-button" @click="showCommentEmojiPicker = !showCommentEmojiPicker">😊</button>
 
 

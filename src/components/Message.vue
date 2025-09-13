@@ -20,6 +20,8 @@ import  Comment  from "./Comment.vue"
 
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
+import EmojiSelect from './EmojiSelect.vue'
+
 
 
 const props = defineProps({
@@ -710,6 +712,9 @@ const getUsersStr = ( users) => {
 	    <emoji-picker   v-if="showEmojiPicker"  @emoji-click="addReactionFromPicker"></emoji-picker>
 -->
 
+   <EmojiSelect v-if="showEmojiPicker" position="rerative" top="0px" left="0px"  @selectEmoji="addReactionFromPicker2" />
+
+<!--
   <EmojiPicker v-if="showEmojiPicker" :native="true" :display-recent="true" @select="addReactionFromPicker2" 
   :additional-groups="{
     my_custom_group: [
@@ -724,10 +729,8 @@ const getUsersStr = ( users) => {
     ],
   }"
   :group-names="{ my_custom_group: 'Frequently used' }"
-
-
   />
-
+-->
 
 <!--
             <button class="emoji-button" @click="showEmojiPicker = !showEmojiPicker">😊</button>

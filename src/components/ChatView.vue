@@ -13,6 +13,7 @@ import  EditRte  from "./EditRte.vue"
 import  ReadOnlyRte  from "./ReadOnlyRte.vue"
 import  MessagePart  from "./Message.vue"
 import EmojiPicker from 'vue3-emoji-picker'
+import EmojiSelect from './EmojiSelect.vue'
 import 'vue3-emoji-picker/css'
 
 
@@ -312,7 +313,7 @@ const addReaction = (messageId: string, emoji: string) => {
 }
 
 const insertEmoji2 = (emoji) => {
-  console.log("Emoji", emoji);
+  console.log("ChatView Emoji", emoji);
   rte.value.insert_emoji(emoji.i);
   showEmojiPicker.value = false
 }
@@ -627,6 +628,9 @@ onMounted(() => {
         <emoji-picker v-if="showEmojiPicker" class="emoji-picker" @emoji-click="insertEmoji"></emoji-picker>
 	-->
 	
+       <EmojiSelect v-if="showEmojiPicker" top="-260px" left="40px"  @selectEmoji="insertEmoji2" />
+
+<!--
        <EmojiPicker v-if="showEmojiPicker" :native="true" :display-recent="true" @select="insertEmoji2" 
   :additional-groups="{
     my_custom_group: [
@@ -642,7 +646,7 @@ onMounted(() => {
   }"
   :group-names="{ my_custom_group: 'Frequently used' }"
   />
-
+-->
 
  
         <div v-if="showSuggestions" class="suggestions">
